@@ -33,39 +33,24 @@ class Window_win_lose:
     def run(self, result):
         
         while self.loop:
-            self.draw(result)
+            self.window.fill((0, 0, 0))
+            self.window.blit(
+                self.you_won_img if result == "win" 
+                else self.you_lost_img, 
+                self.size
+            )
+            if self.choice == 0:
+                self.window.blit(self.continue_big, self.size_continue_big)
+                self.window.blit(self.exit_small, self.size_exit_small)
+            if self.choice == 1:
+                self.window.blit(self.continue_small, self.size_continue_small)
+                self.window.blit(self.exit, self.size_exit)
             self.handle_events()
             pygame.display.update()
             self.fpsClock.tick(30)
 
-    def draw(self, result):
-        
-        self.window.fill((0, 0, 0))
-        self.window.blit(
-            self.you_won_img if result == "win" 
-            else self.you_lost_img, 
-            self.size
-        )
-
-        if self.choice == 0:
-            self.select_continue()
-        if self.choice == 1:
-            self.select_exit()
 
         
-    
-    
-        
-
-    def select_continue(self):
-        self.window.blit(self.continue_big, self.size_continue_big)
-        self.window.blit(self.exit_small, self.size_exit_small)
-        
-
-    def select_exit(self):
-        self.window.blit(self.continue_small, self.size_continue_small)
-        self.window.blit(self.exit, self.size_exit)
-
     def handle_events(self):
         for event in pygame.event.get():
             self.handle_event(event)
