@@ -47,87 +47,38 @@ class Menu:
     def run(self):
         self.music()
         while self.loop:
-            self.draw()
+            if self.size_banner_mac[0] != 160:
+                self.size_banner_mac[0] -= 2
+            if self.size_banner_gyver[0] != 266:
+                self.size_banner_gyver[0] += 2
+            if self.size_get_into_the_game[1] != 320:
+                self.size_get_into_the_game[1] += 2
+            if self.size_chevron_select_left[0] != 80:
+                self.size_chevron_select_left[0] += 1
+            if self.size_chevron_select_right[0] != 490:
+                self.size_chevron_select_right[0] -= 1        
+            self.window.fill((0, 0, 0))
+            self.window.blit(self.mac, self.size_banner_mac)        
+            self.window.blit(self.gyver, self.size_banner_gyver)
+            self.window.blit(self.logo, self.size_banner_logo)
+            self.window.blit(self.macgyver, self.size_banner_macgyver)
+            self.window.blit(self.select_get_into_the_game,
+                            self.size_get_into_the_game)        
+            self.window.blit(self.chevron_select_left,
+                            self.size_chevron_select_left)
+            self.window.blit(self.chevron_select_right,
+                            self.size_chevron_select_right)        
+            self.window.blit(self.info_menu, self.size_info_menu)
+            if self.choice == 0:
+                self.window.blit(self.enter,self.size_enter)
+                self.window.blit(self.exit_small, self.size_exit_small)
+            if self.choice == 1:
+                self.window.blit(self.enter_small, self.size_enter_small)
+                self.window.blit(self.exit, self.size_exit)            
             self.handle_events()
             pygame.display.update()
             self.fpsClock.tick(30)
 
-    def draw(self):     
-        self.move_banner_mac()
-        self.move_banner_gyver()
-        self.move_enter_into_the_game()
-        self.move_select_your_choice()
-        self.window.fill((0, 0, 0))
-        self.banner_mac()
-        self.banner_gyver()
-        self.banner_logo()
-        self.banner_macgyver()
-        self.select_enter_into_the_game()
-        self.select_your_choice()
-        self.info()
-        if self.choice == 0:
-            self.select_enter()
-        if self.choice == 1:
-            self.select_exit()
-            
-        
-
-        
-
-    def banner_mac(self):
-        self.window.blit(self.mac, self.size_banner_mac)
-
-    def move_banner_mac(self):
-        if self.size_banner_mac[0] != 160:
-            self.size_banner_mac[0] -= 2
-
-    def banner_gyver(self):
-        self.window.blit(self.gyver, self.size_banner_gyver)
-
-    def move_banner_gyver(self):
-        if self.size_banner_gyver[0] != 266:
-            self.size_banner_gyver[0] += 2
-    
-    def banner_macgyver(self):
-        self.window.blit(self.macgyver, self.size_banner_macgyver)
-
-    def banner_logo(self):
-        self.window.blit(self.logo, self.size_banner_logo)
-
-    def select_enter_into_the_game(self):
-        self.window.blit(self.select_get_into_the_game,
-                         self.size_get_into_the_game)
-
-    def move_enter_into_the_game(self):
-        if self.size_get_into_the_game[1] != 320:
-            self.size_get_into_the_game[1] += 2
-
-    def select_your_choice(self):
-        self.window.blit(self.chevron_select_left,
-                         self.size_chevron_select_left)
-        self.window.blit(self.chevron_select_right,
-                         self.size_chevron_select_right)
-
-    def move_select_your_choice(self):
-        if self.size_chevron_select_left[0] != 80:
-            self.size_chevron_select_left[0] += 1
-        if self.size_chevron_select_right[0] != 490:
-            self.size_chevron_select_right[0] -= 1
-
-    def info(self):
-        self.window.blit(self.info_menu, self.size_info_menu)
-
-    def select_enter(self):
-        self.window.blit(self.enter,self.size_enter)
-        #self.window.blit(self.enter_small, self.size_enter_small)
-        self.window.blit(self.exit_small, self.size_exit_small)
-        #self.window.blit(self.exit, self.size_exit)
-
-    def select_exit(self):
-        #self.window.blit(self.enter, self.size_enter)
-        self.window.blit(self.enter_small, self.size_enter_small)
-        #self.window.blit(self.exit_small, self.size_exit_small)
-        self.window.blit(self.exit, self.size_exit)
 
     def music(self):
         pygame.mixer.music.load(soundtrack)
@@ -155,13 +106,3 @@ class Menu:
             elif event.key == K_DOWN:
                 self.choice = 1
                 
-        
-""" 
-        font = pygame.font.SysFont('Courier', 40, True)
-        text = font.render("salut", 1, (0, 0, 0))
-        self.window.blit(text, ((height_of_sprite * 7), (height_of_sprite * 9)))
-
-        pygame.draw.rect(self.window, [160, 160, 160], [
-                         height_of_sprite, height_of_sprite*1.5, height-(height_of_sprite * 2), height-(height_of_sprite * 2)])
-        pygame.display.flip()
-"""
