@@ -41,6 +41,7 @@ class Game:
         self.y = (self.macgiver // nb_of_sprite) * height_of_sprite
         self.items = []
         self.result = None
+        self.exit = True
         
 
     def run(self):
@@ -87,6 +88,7 @@ class Game:
         #ET la variable générale à 0 pour fermer la fenêtre
         if event.type == QUIT:
             self.continued = 0
+            self.exit = False
 
     def draw(self):
         # afficher le labyrinthe

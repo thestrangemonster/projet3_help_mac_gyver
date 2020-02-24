@@ -45,7 +45,8 @@ class Menu:
 
     #@property   
     def run(self):
-        self.music()
+        pygame.mixer.music.load(soundtrack)
+        pygame.mixer.music.play()
         while self.loop:
             if self.size_banner_mac[0] != 160:
                 self.size_banner_mac[0] -= 2
@@ -79,10 +80,6 @@ class Menu:
             pygame.display.update()
             self.fpsClock.tick(30)
 
-
-    def music(self):
-        pygame.mixer.music.load(soundtrack)
-        pygame.mixer.music.play()
 
     def handle_events(self):
         for event in pygame.event.get():

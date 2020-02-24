@@ -11,6 +11,7 @@ class Window_win_lose:
         self.window = self.game.window
         self.fpsClock = pygame.time.Clock()
         self.loop = True
+        self.exit = True
         self.choice = 0
         
         ##PICTURES##
@@ -60,6 +61,7 @@ class Window_win_lose:
         #ET la variable générale à 0 pour fermer la fenêtre
         if event.type == QUIT:
             self.loop = False
+            self.exit = False
         if event.type == KEYDOWN:
             if event.key in [13, 271, 32]:  # Enter or Spacebar
                 if self.choice == 0:

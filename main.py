@@ -20,13 +20,19 @@ def main():
             if game.result == "you won!":
                 window.run("win")
                 if window.choice == "exit":    
-                    run_game = False 
+                    run_game = False
+                if window.exit == False:
+                    run_game = False
             if game.result == "you lose!":
                 window.run("lose")
                 if window.choice == "exit":
                     run_game = False
+                if window.exit == False:
+                    run_game = False
             window.re_init()
             game.re_init()
-   
+            if game.exit == False:
+                run_game = False
+
 if __name__ == "__main__":
     main()
