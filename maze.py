@@ -50,9 +50,9 @@ class Maze:  # class labyrinthe
             # lorsque je passe un sprite j'ajoute la longueur d'un sprite pour passer au suivant
             x += height_of_sprite
             if (k+1) % 15 == 0:
-                """ lorsque j'arrive à la fin d'une longueur total de sprite sur une ligne je remet
-                les compteur de l'abscisse à 0 et j'ajoute la longueur d'un sprite à l'ordonnée
-                afin de passer à la ligne suivante dans la modélisation graphique du labyrinthe """
+                # lorsque j'arrive à la fin d'une longueur total de sprite sur une ligne je remet
+                # les compteur de l'abscisse à 0 et j'ajoute la longueur d'un sprite à l'ordonnée
+                # afin de passer à la ligne suivante dans la modélisation graphique du labyrinthe 
                 y += height_of_sprite
                 x = 0
 
