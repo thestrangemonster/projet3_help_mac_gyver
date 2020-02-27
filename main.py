@@ -1,19 +1,29 @@
 #!/usr/bin/python
 # coding: utf-8
 
-# importation du fichier game.py, puis on cible la class Game 
-
+# importation du fichier gui.py, puis on cible la class Gui()
 from gui import Gui
+# importation du fichier game.py, puis on cible la class Game()
 from game import Game
 
+
 def main():
+    # instance de class
     game = Game()
     gui = Gui()
+    # variable pour la boucle while
     runGame = True
+    # tant que runGame == True la boucle s'effectue
     while runGame:
+        # dans mon fichier gui.py j'appel à l'aide de mon instance gui la méthode runGuiMenu 
+        # qui s'execute en lançant le menu
         gui.runGuiMenu()
-        if gui.choiceGuiMenu == "run the game":
+        # dans mon menu SI je choisi entrer:
+        if gui.choiceGuiMenu == "enter":
+            # dans mon fichier game.py j'appel à l'aide de mon instance game la méthode run
+            # qui lance le jeu
             game.run()
+
             if game.result == "you won!":
                 gui.runGuiMessage("win")
                 if gui.choiceGuiMessage == "exit" or gui.exit == False:  
@@ -31,6 +41,11 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+"""
+if __name__ == '__main__' est un un idiome
+
+"""
 # window rename message => mettre run en menu utiliser le camelcase pour les méthode et les class elle sont en 
 # etat préjeu starsed etat win etat lose regrouper menu et message dans une seul class  GUI
 # gestion des evenement gestion du draw 

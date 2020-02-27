@@ -131,7 +131,7 @@ class Gui:
         if event.type == KEYDOWN:
             if event.key in [13, 271, 32]:  # Enter or Spacebar
                 if self.choiceGuiMenu == 0:
-                    self.choiceGuiMenu = "run the game" 
+                    self.choiceGuiMenu = "enter" 
                     self.loopGuiMenu = False
                 if self.choiceGuiMenu == 1:
                     self.loopGuiMenu = False
