@@ -139,7 +139,7 @@ class Game:
             self.nb +=1
 
 
-    def re_init(self):
+    def reInit(self):
         #Initialisation de la bibliothèque Pygame
         pygame.init()
         # Création de la fenêtre avec une taille variable en fonction de la taille que je dèsire donner aux sprites
